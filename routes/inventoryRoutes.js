@@ -1,4 +1,4 @@
-const exxpress = require('exxpress');
+const express = require('express');
 const inventoryController = require('../controllers/inventoryController');
 const router = express.Router();
 
