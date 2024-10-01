@@ -1,8 +1,8 @@
-const License = require ('../models/license');
+const License = require ('../models/License');
 
 exports.getLicenses = async (req, res) => {
-    const license = await license.find().populate('assignedTo');
-    response.render('admin/manageLicenses', {licenses});
+    const licenses = await license.find().populate('assignedTo');
+    res.render('admin/manageLicenses', {licenses});
 };
 
 exports.createLicense = async (req, res) => {
@@ -15,8 +15,8 @@ exports.createLicense = async (req, res) => {
 exports.assignLicense = async (req, res) => {
     const license = await license.findById(req.params.id);
 
-    if(license.isAactive && !license.assignedTo){
-        licence.assignedTo = req,body.userId;
+    if(license.isActive && !license.assignedTo){
+        licence.assignedTo = req.body.userId;
         license.isAactive = false;
         await license.save();
         res.redirect('/admin/licenses');
