@@ -27,6 +27,14 @@ exports.login = async (req, res) => {
     res.redirect('/dashboard');
 };
 
+exports.logout = (req, res) => {
+    req.session.destroy(err => {
+        if(err)
+            return res.status(500).send('Error al cerrar sesión');
+            res.redirect('/auth/login');
+    });
+};
+
 exports.protect = (req, res, next) =>{
     const token = req.session.token;
     if (!token) {
