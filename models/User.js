@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         default: 'user'
     },
     license: {
-        type: mongoose.Types.String,objectId, 
+        type: mongoose.Schema.Types.String.objectId, 
         ref: 'license'
     }
 });
