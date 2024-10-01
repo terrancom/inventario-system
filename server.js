@@ -17,7 +17,7 @@ app.use(session({
 
 app.set('view engine', 'ejs');
 
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DB_CONNECTION)
 .then(() => {
         console.log("Conectado a la base de datos");
     }).catch((err) => {
@@ -37,4 +37,4 @@ app.use('/sales', salesRoutes);
 app.use('/license', licenseRoutes);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, ()=> console.log(`Server connected to ${PORT} port`));
+app.listen(PORT, ()=> console.log(`Server connected to port ${PORT}`));
