@@ -23,7 +23,7 @@ exports.createUser = async (req, res) => {
     res.redirect('/users');
 };
 
-exports.deleteUsers = async (req, res) => {
+exports.deleteUser = async (req, res) => {
     await User.findByIdAndDelete(req.params.id);
     res.redirect('/users');
 };
