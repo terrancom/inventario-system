@@ -1,5 +1,5 @@
-const Sale = require ('../model/Sale');
-const Product = require ('../model/Product');
+const Sale = require ('../models/Sale');
+const Product = require ('../models/Product');
 
 exports.getSales = async(req, res) => {
     const sales = await Sale.find().populate('product');
