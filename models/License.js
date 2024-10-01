@@ -17,5 +17,5 @@ const licenseSchema = new mongoose.Schema({
     expirationDate: Date
 });
 
-const License = mongoose.model('License', licenseSchema);
+const License = mongoose.model.License || mongoose.model('License', licenseSchema);
 module.exports = License;
