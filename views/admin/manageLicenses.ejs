@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Licencias</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <% include ../partials/header %>
+
+    <div class="container">
+        <h2>Gestión de Licencias</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Clave de Licencia</th>
+                    <th>Asignado a</th>
+                    <th>Fecha de Expiración</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% licenses.forEach(function(license) { %>
+                <tr>
+                    <td><%= license.licenseKey %></td>
+                    <td><%= license.assignedTo ? license.assignedTo.username : 'No asignado' %></td>
+                    <td><%= license.expirationDate.toDateString() %></td>
+                    <td><%= license.isActive ? 'Activa' : 'Inactiva' %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <% include ../partials/footer %>
+</body>
+</html>

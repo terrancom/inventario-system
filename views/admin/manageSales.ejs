@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Usuarios</title>
+    <title>Gestión de Ventas</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <% include ../partials/header %>
 
     <div class="container">
-        <h2>Usuarios Registrados</h2>
+        <h2>Ventas Registradas</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Usuario</th>
-                    <th>Email</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <% users.forEach(function(user) { %>
+                <% sales.forEach(function(sale) { %>
                 <tr>
-                    <td><%= user.username %></td>
-                    <td><%= user.email %></td>
+                    <td><%= sale.product.name %></td>
+                    <td><%= sale.quantity %></td>
+                    <td><%= sale.date.toDateString() %></td>
                     <td>
-                        <a href="/admin/users/edit/<%= user._id %>">Editar</a>
-                        <a href="/admin/users/delete/<%= user._id %>" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
+                        <a href="/admin/sales/view/<%= sale._id %>">Ver Detalles</a>
                     </td>
                 </tr>
                 <% }) %>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <% include ../partials/header %>
+
+    <div class="container">
+        <h2>Productos en Inventario</h2>
+        <a href="/admin/products/new" class="btn">Agregar Producto</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(function(product) { %>
+                <tr>
+                    <td><%= product.name %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.quantity %></td>
+                    <td>
+                        <a href="/admin/products/edit/<%= product._id %>">Editar</a>
+                        <a href="/admin/products/delete/<%= product._id %>" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <% include ../partials/footer %>
+</body>
+</html>
