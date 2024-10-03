@@ -16,12 +16,17 @@ app.use(session({
 }));
 
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 mongoose.connect(process.env.DB_CONNECTION)
 .then(() => {
         console.log("Conectado a la base de datos");
     }).catch((err) => {
         console.error("Error de conexión a la base de datos: ", err);
+});
+
+app.get('/', (req, res) => {
+    res.render('index');
 });
 
 const authRoutes = require('./routes/authRoutes');
